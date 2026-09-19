@@ -20,12 +20,15 @@ export const BottomNav: React.FC = () => {
         bottom: 0,
         left: 0,
         right: 0,
+        width: '100%',
+        flexShrink: 0,
+        boxSizing: 'border-box',
         background: '#0D0E12',
         borderTop: '1px solid rgba(255, 255, 255, 0.08)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-around',
-        padding: '10px 12px 18px',
+        padding: '8px 12px calc(10px + env(safe-area-inset-bottom, 0px))',
         zIndex: 100,
       }}
     >

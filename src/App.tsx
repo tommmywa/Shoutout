@@ -148,43 +148,36 @@ export const App: React.FC = () => {
       </header>
 
       {/* Mobile Device Frame */}
-      <main
-        className="device-frame"
-        style={
-          isFullscreen
-            ? {
-                maxWidth: '100%',
-                height: '100vh',
-                maxHeight: '100vh',
-                borderRadius: 0,
-                border: 'none',
-              }
-            : undefined
-        }
-      >
-        {/* Dynamic Island */}
-        <div className="dynamic-island">
-          <div className="dynamic-island-sensor" />
-          <div className="dynamic-island-lens" />
-        </div>
-
-        {/* Mobile Status Bar */}
-        <div className="status-bar">
-          <span>{currentTime}</span>
-          <div className="status-bar-icons">
-            <Volume2 size={12} color="var(--color-solar-amber)" />
-            <Wifi size={13} />
-            <Battery size={15} />
+      <main className="device-frame">
+        {/* Dynamic Island - only in framed view */}
+        {!isFullscreen && (
+          <div className="dynamic-island">
+            <div className="dynamic-island-sensor" />
+            <div className="dynamic-island-lens" />
           </div>
-        </div>
+        )}
+
+        {/* Mobile Status Bar - only in framed view */}
+        {!isFullscreen && (
+          <div className="status-bar">
+            <span>{currentTime}</span>
+            <div className="status-bar-icons">
+              <Volume2 size={12} color="var(--color-solar-amber)" />
+              <Wifi size={13} />
+              <Battery size={15} />
+            </div>
+          </div>
+        )}
 
         {/* Viewport Screen Area */}
         <div className="screen-viewport">{renderCurrentScreen()}</div>
 
         {/* Home Indicator */}
-        <div className="home-indicator-bar">
-          <div className="home-indicator" />
-        </div>
+        {!isFullscreen && (
+          <div className="home-indicator-bar">
+            <div className="home-indicator" />
+          </div>
+        )}
       </main>
     </div>
   );
